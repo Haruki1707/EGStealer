@@ -60,9 +60,6 @@
     <Reference Include="IconExtractor, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IconExtractor.1.0.1\lib\net40\IconExtractor.dll</HintPath>
     </Reference>
-    <Reference Include="IconLib, Version=0.74.3.0, Culture=neutral, PublicKeyToken=9c8a655eb595762a, processorArchitecture=MSIL">
-      <HintPath>..\packages\IconLib.0.74.3\lib\net40\IconLib.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
       <HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
