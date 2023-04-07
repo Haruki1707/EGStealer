@@ -16,7 +16,7 @@ jobs:
           run: cd ${{ github.workspace }}
           
         - name: Setup MSBuild
-          uses: microsoft/setup-msbuild@v1.1
+          uses: microsoft/setup-msbuild@v1
         
         - name: Build Solution
           run: |
