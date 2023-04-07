@@ -20,12 +20,12 @@ jobs:
         
         - name: Build Solution
           run: |
-            msbuild ShortCutes.sln -restore -p:RestorePackagesConfig=true -p:platform="Any CPU" -p:Configuration=Release
+            msbuild EGStealer.sln -restore -p:RestorePackagesConfig=true -p:platform="Any CPU" -p:Configuration=Release
 
         - name: Upload Release Asset
           uses: softprops/action-gh-release@v1
           with:
-            name: ShortCutes ${{ github.event.release.tag_name }}
+            name: EGStealer ${{ github.event.release.tag_name }}
             prerelease: false
             files: |
-              ShortCutes/bin/Release/ShortCutes.exe
+              EGStealer/bin/Release/EGStealer.exe
