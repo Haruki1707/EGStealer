@@ -1,0 +1,31 @@
+name: |
+  Title: Update | Asset: Build & Upload
+on:  
+  release:
+    types: [published]
+    branches: [ main ]
+
+jobs:  
+  build:    
+    runs-on: windows-latest
+    
+    steps:      
+        - uses: actions/checkout@v2
+        
+        - name: Navigate to Workspace
+          run: cd ${{ github.workspace }}
+          
+        - name: Setup MSBuild
+          uses: microsoft/setup-msbuild@v1.1
+        
+        - name: Build Solution
+          run: |
+            msbuild ShortCutes.sln -restore -p:RestorePackagesConfig=true -p:platform="Any CPU" -p:Configuration=Release
+
+        - name: Upload Release Asset
+          uses: softprops/action-gh-release@v1
+          with:
+            name: ShortCutes ${{ github.event.release.tag_name }}
+            prerelease: false
+            files: |
+              ShortCutes/bin/Release/ShortCutes.exe

@@ -20,16 +20,20 @@ namespace Steam_Overlay_on_EGS_games
         [STAThread]
         static void Main()
         {
-            if (!CheckIfRunning("EpicGamesLauncher"))
+            if (!CheckIfRunning("EpicGamesLauncher")) {
                 RegisterTaskandRunIt(gameURL);
+                while(!CheckIfRunning("EpicGamesLauncher"))
+                    Thread.Sleep(500);
+            }
             else
                 Process.Start(gameURL);
 
+
             Process EpicGame = GetRunningProcessWithEpicCommands();
 
-            if(taskRegistered)
+            if (taskRegistered)
                 using (TaskService ts = new TaskService())
-                    ts.RootFolder.DeleteTask("EGStealer start epic silent");
+                    ts.RootFolder.DeleteTask("EGS silent startup");
 
             if (Debugger.IsAttached)
                 MessageBox.Show(EpicGame.StartInfo.FileName);
@@ -80,10 +84,11 @@ namespace Steam_Overlay_on_EGS_games
                 td.RegistrationInfo.Description = "EGStealer start epic silent";
 
                 // Create an action that will launch Notepad whenever the trigger fires
-                td.Actions.Add(new ExecAction("cmd.exe", "/C start \"\" \"" + URL + "\""));
+                //td.Actions.Add(new ExecAction("cmd.exe", "/C start \"\" \"" + URL + "\""));
+                td.Actions.Add(new ExecAction("explorer.exe", "\"" + URL + "\""));
 
                 // Register the task in the root folder
-                ts.RootFolder.RegisterTaskDefinition(@"EGS silent startup", td);
+                ts.RootFolder.RegisterTaskDefinition("EGS silent startup", td);
 
                 taskRegistered = true;
 

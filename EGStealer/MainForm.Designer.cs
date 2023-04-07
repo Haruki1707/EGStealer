@@ -71,9 +71,9 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(15, 45);
+            this.checkedListBox1.Location = new System.Drawing.Point(15, 33);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(351, 319);
+            this.checkedListBox1.Size = new System.Drawing.Size(351, 334);
             this.checkedListBox1.TabIndex = 4;
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck_1);
             // 
@@ -108,8 +108,10 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkedListBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EGStealer";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.ResumeLayout(false);

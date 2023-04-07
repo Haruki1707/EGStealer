@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EZ_Updater;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -28,7 +29,7 @@ namespace EGStealer
             this.BeginInvoke(new MethodInvoker(a));
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
+        private async void MainForm_Shown(object sender, EventArgs e)
         {
             Thread t = new Thread(() =>
             {
@@ -69,6 +70,15 @@ namespace EGStealer
                 t2.Start();
             });
             t.Start();
+
+            Updater.GUI_Context = SynchronizationContext.Current;
+            if (await Updater.CheckUpdateAsync("Haruki1707", "EGStealer"))
+            {
+                if (Updater.CannotWriteOnDir)
+                    MessageBox.Show(Updater.Message, "Updater Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    new UpdaterMessage().ShowDialog();
+            }
         }
 
         private async void CompileButton_Click(object sender, EventArgs e)
