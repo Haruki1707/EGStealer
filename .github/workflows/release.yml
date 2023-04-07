@@ -17,6 +17,22 @@ jobs:
           
         - name: Setup MSBuild
           uses: microsoft/setup-msbuild@v1
+
+        - name: Tag Name replace 'v'
+          uses: mad9000/actions-find-and-replace-string@4
+          id: tagnameFR
+          with:
+            source: ${{ github.event.release.tag_name }}
+            find: 'v'
+            replace: ''
+
+        - name: Set version of EGStealer equal to Tag name
+          uses: secondbounce/assemblyinfo-update@v2
+          with:
+            version: ${{ steps.tagnameFR.outputs.value }}"
+            directory: 'EGStealer/Properties'
+            filename: 'AssemblyInfo.cs'
+            recursive: false
         
         - name: Build Solution
           run: |
