@@ -48,6 +48,7 @@
             this.OKbtn.TabIndex = 1;
             this.OKbtn.Text = "OK";
             this.OKbtn.UseVisualStyleBackColor = true;
+            this.OKbtn.Click += new System.EventHandler(this.OKbtn_Click);
             // 
             // Messagelbl
             // 
@@ -67,8 +68,9 @@
             this.Controls.Add(this.Messagelbl);
             this.Controls.Add(this.OKbtn);
             this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpdaterMessage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UpdaterMessage";
             this.ResumeLayout(false);
 

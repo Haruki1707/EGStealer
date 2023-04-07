@@ -37,5 +37,10 @@ namespace EGStealer
                     break;
             }
         }
+
+        private void OKbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
